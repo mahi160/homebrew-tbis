@@ -18,16 +18,17 @@ cask "tbis" do
   auto_updates true
   # the release bundles arm64 Homebrew libraries, including libmpv
   depends_on arch: :arm64
-  depends_on macos: ">= :big_sur"
+  depends_on :macos
 
   app "tbis.app"
 
   # tbis is ad-hoc signed, not notarized (no Apple Developer ID yet), so
   # Gatekeeper blocks it until the quarantine attribute is cleared
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/tbis.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:           ["-cr", "{{appdir}}/tbis.app"],
+        writable_paths: ["tbis.app"],
+        writable_base:  :appdir
   end
 
   zap trash: [

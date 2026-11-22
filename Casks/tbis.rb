@@ -1,7 +1,7 @@
 cask "tbis" do
   # version and sha256 are bumped by tbis's release workflow on every release
-  version "0.10.0"
-  sha256 "5faf45cffdad04583bc0bf83b2bc16b38ecac8b638ec1f45c22cddcffc04aaa0"
+  version "0.10.1"
+  sha256 "e6d0e702774fe6cecf651fa7dd14a246bcf57ce9e2cb58b1cd527e625ebc08ae"
 
   url "https://github.com/mahi160/tbis/releases/download/v#{version}/tbis-#{version}-macos-arm64.zip"
   name "tbis"
